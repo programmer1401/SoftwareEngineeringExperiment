@@ -1,0 +1,24 @@
+<div nz-row style="margin-top: 20px;">
+    <div nz-col [nzSpan]="24" class="ant-table-body">
+        <!--表格数据-->
+        <nz-table
+            nzBordered>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>课程名称</th>
+                <th>学分</th>
+                <th>得分</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let selectCourse of this.selectCourseList; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ selectCourse?.course.name }}</td>
+                <td>{{ selectCourse?.course.credit }}</td>
+                <td>{{ selectCourse?.score }}</td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

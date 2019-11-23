@@ -1,0 +1,40 @@
+<ul nz-menu [nzMode]="'inline'" style="height: 100%;" *ngIf="user?.role === 'admin'">
+        <li nz-submenu nzTitle="录入信息" nzIcon="appstore">
+            <ul>
+                <li nz-menu-item routerLink="/main/student/add">学生信息</li>
+                <li nz-menu-item routerLink="/main/teacher/add">教师信息</li>
+                <li nz-menu-item routerLink="/main/klass/add">班级信息</li>
+                <li nz-menu-item routerLink="/main/course/add">课程信息</li>
+                <li nz-menu-item routerLink="/main/grade/add">年级信息</li>
+            </ul>
+        </li>
+        <li nz-submenu nzTitle="查询信息" nzIcon="setting">
+            <ul>
+                <li nz-menu-item routerLink="/main/student">学生信息</li>
+                <li nz-menu-item routerLink="/main/teacher">教师信息</li>
+                <li nz-menu-item routerLink="/main/klass">班级信息</li>
+                <li nz-menu-item routerLink="/main/course">课程信息</li>
+                <li nz-menu-item routerLink="/main/grade">年级信息</li>
+            </ul>
+        </li>
+        <li nz-submenu nzTitle="输出报表" nzIcon="setting">
+            <ul>
+                <li nz-menu-item routerLink="/main/export/klassScore">班级单科成绩报表</li>
+                <li nz-menu-item routerLink="/main/export/studentScore">学生成绩报表</li>
+                <li nz-menu-item routerLink="/main/export/needRestudyStudent">需重修学生报表</li>
+                <li nz-menu-item routerLink="/main/export/repeatStudent">学籍变动学生名单</li>
+            </ul>
+        </li>
+</ul>
+
+
+<ul nz-menu [nzMode]="'inline'" style="height: 100%;" *ngIf="user?.role === 'student'">
+    <li nz-menu-item routerLink="/main/student/score" nzSelected>成绩查询</li>
+</ul>
+
+<ul nz-menu [nzMode]="'inline'" style="height: 100%;" *ngIf="user?.role === 'teacher'">
+    <li nz-menu-item routerLink="/main/myCourse/setScore">录入成绩</li>
+    <li nz-menu-item routerLink="/main/myCourse">查询课程</li>
+    <li nz-menu-item routerLink="/main/export/klassScore">输出报表</li>
+</ul>
+

@@ -1,0 +1,37 @@
+<app-back-button></app-back-button>
+<form nz-form [formGroup]="editFrom" (ngSubmit)="submitForm()">
+    <!--名称-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">班级名称</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <input nz-input formControlName="name" id="name">
+                </div>
+            </div>
+            <nz-form-explain *ngIf="editFrom.get('name').dirty && editFrom.get('name').errors">名称必须要填写!
+            </nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="grade">选择任课老师</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="12">
+                    <nz-select nzMode="default" nzPlaceHolder="请选择年级" formControlName="grade" [compareWith]="getCompareGradeEqual()">
+                        <nz-option *ngFor="let grade of gradeOptions" [nzLabel]="grade.name"
+                                   [nzValue]="grade"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!--保存按钮-->
+    <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" [disabled]="editFrom.invalid">保存</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

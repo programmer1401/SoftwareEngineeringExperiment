@@ -1,0 +1,30 @@
+<div nz-row style="margin-top: 20px;">
+    <div nz-col [nzSpan]="24" class="ant-table-body">
+        <!--表格数据-->
+        <nz-table
+          nzBordered>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>年级</th>
+                <th>班级名称</th>
+                <th class="operation">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let klass of this.teacher?.klassList; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ klass?.grade?.name }}</td>
+                <td>{{ klass?.name }}</td>
+                <td>
+                    <a nz-button nzGhost nzType="primary"
+                       [routerLink]="['klassDetail',klass?.id]">
+                        <i nz-icon
+                           type="edit"
+                           theme="outline"></i>班级详情</a>&nbsp;
+                </td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

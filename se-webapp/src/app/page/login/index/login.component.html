@@ -1,0 +1,23 @@
+<div class="full-screen page-content" style="background-image: url('./assets/img/background.jpg')">
+    <div class="wrapper">
+        <img class="logo-img" src="./assets/img/logo.png"/>
+        <div class="text-wrapper">
+            <h1 class="title-text">
+                欢迎使用!
+            </h1>
+            <p class="app-name">学生管理系统</p>
+        </div>
+        <input nz-input placeholder="请输入学号/工号" minlength="6" #usernameInput [(ngModel)]="user.username">
+        <br/>
+        <input nz-input type="password" placeholder="请输入密码" #passwordInput [(ngModel)]="user.password">
+        <button nz-button [nzType]="'primary'" (click)="login()"
+                [disabled]="!usernameInput.value || !passwordInput.value">
+            登录
+        </button>
+    </div>
+    <div style="margin-top: 45%"></div>
+
+    <div class="copy-right">
+        <p>Copyright © {{ currentDate.getFullYear() }} 曹奇文、高涵哲、李宜衡、梁海达、马嘉龙、解雷静（以姓氏拼音排序）</p>
+    </div>
+</div>

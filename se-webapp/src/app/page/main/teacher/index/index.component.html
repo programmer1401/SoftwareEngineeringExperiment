@@ -1,0 +1,65 @@
+<div nz-col [nzSpan]="24">
+    <form nz-form [formGroup]="searchForm" (ngSubmit)="search()">
+        <nz-form-item>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <div nz-row [nzGutter]="8">
+                    <div nz-col nzSpan="5">
+                        <nz-select nzMode="default" nzPlaceHolder="关键字"
+                                   formControlName="searchLabel">
+                            <nz-option nzLabel="教师名称" nzValue="teacherName"></nz-option>
+                            <nz-option nzLabel="学院" nzValue="collegeName"></nz-option>
+                        </nz-select>
+                    </div>
+                    <div nz-col [nzSpan]="5">
+                        <input nz-input formControlName="searchValue" id="creditNeed">
+                    </div>
+
+                    <div nz-col nzSpan="4">
+                        <button nz-button nzType="primary">搜索</button>
+                    </div>
+                </div>
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+</div>
+<div nz-row style="margin-top: 20px;">
+    <div nz-col [nzSpan]="24" class="ant-table-body">
+        <!--表格数据-->
+        <nz-table
+          #rowSelectionTable
+          nzBordered
+          [nzData]="teacherPage.content"
+          [nzTotal]="teacherPage.totalElements"
+          [(nzPageSize)]="teacherPage.size"
+          [(nzPageIndex)]="teacherPage.numberOfElements"
+          [nzFrontPagination]="false"
+          (nzPageIndexChange)="reloadData()"
+          (nzPageSizeChange)="reloadData()">
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>工号</th>
+                <th>名称</th>
+                <th>学院</th>
+                <th class="operation">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let teacher of rowSelectionTable.data; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ teacher.number }}</td>
+                <td>{{ teacher?.name }}</td>
+                <td>{{ teacher?.college}}</td>
+                <td>
+                    <a nz-button nzGhost nzType="primary" [routerLink]="['/main/teacher/edit',teacher.id]"><i nz-icon type="edit"
+                                                                                                            theme="outline"></i>编辑</a>&nbsp;
+                    <button nz-popconfirm
+                            nzTitle="确定删除吗?"
+                            (nzOnConfirm)="delete(teacher.id)"
+                            (nzOnCancel)="cancel('取消删除')" nz-button nzGhost nzType="danger"><i nz-icon type="delete" theme="outline"></i>删除</button>
+                </td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

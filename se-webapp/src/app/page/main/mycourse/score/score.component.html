@@ -1,0 +1,37 @@
+<button (click)="exportScoreByKlassIdAndCourseId()"><i nz-icon type="export"></i>导出</button>
+
+<div nz-row style="margin-top: 20px;">
+    <div nz-col [nzSpan]="24" class="ant-table-body">
+        <!--表格数据-->
+        <nz-table
+            nzBordered>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>课程名称</th>
+                <th>学分</th>
+                <th>得分</th>
+                <th class="operation">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let selectCourse of this.selectCourseList; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ selectCourse?.student.number }}</td>
+                <td>{{ selectCourse?.student.name }}</td>
+                <td>{{ selectCourse?.course.name }}</td>
+                <td>{{ selectCourse?.course.credit }}</td>
+                <td>{{ selectCourse?.score }}</td>
+                <td>
+                    <a nz-button nzGhost nzType="primary" [routerLink]="['/main/myCourse/setScore',selectCourse.id]"><i
+                        nz-icon
+                        type="edit"
+                        theme="outline"></i>编辑</a>&nbsp;
+                </td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

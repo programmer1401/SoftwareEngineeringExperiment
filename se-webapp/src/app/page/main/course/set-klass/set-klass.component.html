@@ -1,0 +1,47 @@
+<app-back-button></app-back-button>
+<form nz-form [formGroup]="editFrom" (ngSubmit)="submitForm()">
+    <!--名称-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">课程名称</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    {{course?.name}}
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="credit">老师名称</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    {{teacher?.name}}
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="teacherList">选择需要上课的班级</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="12">
+                    <nz-select nzMode="tags" nzPlaceHolder="请选择上课班级"
+                               formControlName="klassList" [compareWith]="getCompareKlassEqual()">
+                        <nz-option *ngFor="let klass of this.teacher?.klassList" [nzLabel]="klass?.name"
+                                   [nzValue]="klass"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!--保存按钮-->
+    <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" [disabled]="editFrom.invalid">保存</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

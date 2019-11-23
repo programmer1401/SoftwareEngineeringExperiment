@@ -1,0 +1,67 @@
+<app-back-button></app-back-button>
+<form nz-form [formGroup]="setScoreForm" (ngSubmit)="submitForm()">
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="credit">班级</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <nz-select nzMode="default" nzPlaceHolder="请选择班级" formControlName="klass" [compareWith]="compare()" (nzOpenChange)="getSelectCourseByKlass()">
+                        <nz-option *ngFor="let option of klassOptions;" [nzLabel]="option.name"
+                                   [nzValue]="option"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="course">课程</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <nz-select nzMode="default" nzPlaceHolder="请选择课程" formControlName="course"
+                               [compareWith]="compare()" (nzOpenChange)="filterSelectCourseByCourse()">
+                        <nz-option *ngFor="let option of courseOptions;" [nzLabel]="option.name"
+                                   [nzValue]="option"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="credit">学生</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <nz-select nzMode="default" nzPlaceHolder="请选择学生" formControlName="selectCourse"
+                               [compareWith]="compare()">
+                        <nz-option *ngFor="let option of selectCourseOptions;" [nzLabel]="option.student.name"
+                                   [nzValue]="option"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="score">分数</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <input nz-input formControlName="score" id="score">
+                </div>
+            </div>
+            <nz-form-explain *ngIf="setScoreForm .get('score').dirty && setScoreForm.get('score').errors">名称必须要填写!
+            </nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!--保存按钮-->
+    <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" [disabled]="setScoreForm.invalid">保存</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>
++

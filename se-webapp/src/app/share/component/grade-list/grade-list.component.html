@@ -1,0 +1,4 @@
+<nz-select nzPlaceHolder="所属年级" class="wide" [(ngModel)]="ngModel" (ngModelChange)="dataChange()" nzAllowClear>
+    <nz-option *ngFor="let data of datas" [nzLabel]="data.name"
+               [nzValue]="data"></nz-option>
+</nz-select>

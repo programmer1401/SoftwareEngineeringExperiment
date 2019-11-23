@@ -1,0 +1,37 @@
+<app-back-button></app-back-button>
+<form nz-form [formGroup]="addForm" (ngSubmit)="submitForm()">
+    <!--编号-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">年级名称</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <input nz-input formControlName="name" id="name">
+                </div>
+            </div>
+            <nz-form-explain *ngIf="addForm.get('name').dirty && addForm.get('name').errors?.required">
+                年级名称必须要填写!
+            </nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="creditNeed">需要学分</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <input nz-input formControlName="creditNeed" id="creditNeed">
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!--保存按钮-->
+    <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" [disabled]="addForm.invalid">保存</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

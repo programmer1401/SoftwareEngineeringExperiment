@@ -1,0 +1,52 @@
+<app-back-button></app-back-button>
+<form nz-form [formGroup]="editFrom" (ngSubmit)="submitForm()">
+
+    <!--名称-->
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">课程名称</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <input nz-input formControlName="name" id="name">
+                </div>
+            </div>
+            <nz-form-explain *ngIf="editFrom.get('name').dirty && editFrom.get('name').errors">课程名称必须要填写!
+            </nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="credit">学分</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col [nzSpan]="12">
+                    <input nz-input formControlName="credit" id="credit">
+                </div>
+            </div>
+            <nz-form-explain *ngIf="editFrom.get('credit')?.dirty && editFrom.get('credit')?.errors">学分必须要填写!
+            </nz-form-explain>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="teacherList">选择任课老师</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+            <div nz-row [nzGutter]="8">
+                <div nz-col nzSpan="12">
+                    <nz-select nzMode="tags" nzPlaceHolder="请选择任课老师" formControlName="teacherList" [compareWith]="getCompareTeacherEqual()">
+                        <nz-option *ngFor="let teacher of teacherOptions" [nzLabel]="teacher.name"
+                                   [nzValue]="teacher"></nz-option>
+                    </nz-select>
+                </div>
+            </div>
+        </nz-form-control>
+    </nz-form-item>
+
+    <!--保存按钮-->
+    <nz-form-item nz-row style="margin-bottom:8px;">
+        <nz-form-control [nzSpan]="14" [nzOffset]="6">
+            <button nz-button nzType="primary" [disabled]="editFrom.invalid">保存</button>
+        </nz-form-control>
+    </nz-form-item>
+</form>

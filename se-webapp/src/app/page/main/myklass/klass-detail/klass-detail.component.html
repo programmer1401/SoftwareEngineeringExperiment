@@ -1,0 +1,32 @@
+<div nz-row style="margin-top: 20px;">
+    <div nz-col [nzSpan]="24" class="ant-table-body">
+        <!--表格数据-->
+        <nz-table
+            nzBordered>
+            <thead>
+            <tr>
+                <th>序号</th>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>是否需留级</th>
+                <th class="operation">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let student of this.klass?.studentList; index as i">
+                <td>{{ i + 1 }}</td>
+                <td>{{ student?.number }}</td>
+                <td>{{ student?.name }}</td>
+                <td>{{ student?.upgrade }}</td>
+                <td>
+                    <a nz-button nzGhost nzType="primary"
+                       [routerLink]="['/main/student/score',student?.id]">
+                        <i nz-icon
+                           type="edit"
+                           theme="outline"></i>成绩详情</a>&nbsp;
+                </td>
+            </tr>
+            </tbody>
+        </nz-table>
+    </div>
+</div>

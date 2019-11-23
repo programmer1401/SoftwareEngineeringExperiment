@@ -1,0 +1,6 @@
+<ng-container [formGroup]="formGroup">
+    <nz-select nzPlaceHolder="请选择课程" [formControlName]="controlName" [compareWith]="getCompareCourseEqual()">
+        <nz-option *ngFor="let option of options; trackBy: trackByFn" [nzLabel]="option.name"
+                   [nzValue]="option"></nz-option>
+    </nz-select>
+</ng-container>
