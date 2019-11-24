@@ -107,13 +107,18 @@ export class SetScoreComponent implements OnInit {
     submitForm(): void {
         let selectCourse = this.setScoreForm.get('selectCourse').value;
         selectCourse.score = this.setScoreForm.get('score').value;
-        this.selectCourseService.update(selectCourse.id, selectCourse)
+        if(selectCourse.score>=0&&selectCourse.score<=100){
+         this.selectCourseService.update(selectCourse.id, selectCourse)
             .subscribe(() => {
                 this.message.success("录入成功");
             }, (error) => {
                 console.log(error);
                 this.message.error("录入失败");
             });
+        }else{
+        this.message.error("成绩格式有误");
+        }
+       
     }
 
 
