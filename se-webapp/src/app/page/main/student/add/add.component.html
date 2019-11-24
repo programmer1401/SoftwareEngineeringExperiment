@@ -6,7 +6,7 @@
         <nz-form-control [nzSm]="14" [nzXs]="24">
             <div nz-row [nzGutter]="8">
                 <div nz-col [nzSpan]="12">
-                    <input nz-input formControlName="number" id="number" minlength="6" maxlength="6">
+                    <input nz-input formControlName="number" id="number" minlength="6" maxlength="6" appOnlyNumber>
                 </div>
             </div>
             <nz-form-explain *ngIf="addForm.get('number').dirty && addForm.get('number').errors?.required">
@@ -20,11 +20,11 @@
     </nz-form-item>
     <!--名称-->
     <nz-form-item>
-        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name">学生姓名</nz-form-label>
-        <nz-form-control [nzSm]="14" [nzXs]="24">
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="name" >学生姓名</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24" >
             <div nz-row [nzGutter]="8">
                 <div nz-col [nzSpan]="12">
-                    <input nz-input formControlName="name" id="name">
+                    <input nz-input formControlName="name" id="name" appOnlyChinese>
                 </div>
             </div>
             <nz-form-explain *ngIf="addForm.get('name').dirty && addForm.get('name').errors">名称必须要填写!

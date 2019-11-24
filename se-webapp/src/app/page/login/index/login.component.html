@@ -7,7 +7,7 @@
             </h1>
             <p class="app-name">学生管理系统</p>
         </div>
-        <input nz-input placeholder="请输入学号/工号" minlength="6" #usernameInput [(ngModel)]="user.username">
+        <input nz-input placeholder="请输入学号/工号" #usernameInput [(ngModel)]="user.username">
         <br/>
         <input nz-input type="password" placeholder="请输入密码" #passwordInput [(ngModel)]="user.password">
         <button nz-button [nzType]="'primary'" (click)="login()"
